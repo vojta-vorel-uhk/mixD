@@ -12,8 +12,11 @@ public class Tool1 {
                         string,
                         DateTimeFormatter.ofPattern("d. M. yyyy HH:mm:ss"));
 
-        Instant utc = localDateTime.toInstant(ZoneOffset.ofHours(1));
 
+        //Instant utc = localDateTime.toInstant(ZoneOffset.ofHours(1));
+        ZonedDateTime zoned = localDateTime
+                .atZone(ZoneId.of("Europe/Prague"));
+        Instant utc = zoned.toInstant();
         return utc;
     }
 }
